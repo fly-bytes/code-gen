@@ -34,9 +34,8 @@ public class FreeMakerTemplate {
         Configuration config = new Configuration();
 
         try {
-            TEMPLATE_PATH = this.getClass().getResource("/").getPath() + TEMPLATE_PATH;
-            config.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH));
-        } catch (IOException e) {
+            config.setClassLoaderForTemplateLoading(getClass().getClassLoader(), TEMPLATE_PATH);
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -48,7 +47,6 @@ public class FreeMakerTemplate {
             String path = getPath(codeInfo.getEntryPkg());
             checkFileDir(path);
 
-            config.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH));
             Template template = config.getTemplate("entity.ftl", "UTF-8");
             Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + codeInfo.getEntry() + ".java"), "UTF-8"));
             template.process(codeInfo, out);
@@ -68,7 +66,6 @@ public class FreeMakerTemplate {
             String path = getPath(codeInfo.getServicePkg());
             checkFileDir(path);
 
-            config.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH));
             Template template = config.getTemplate("service.ftl", "UTF-8");
             Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + codeInfo.getService() + ".java"), "UTF-8"));
             template.process(codeInfo, out);
@@ -88,7 +85,6 @@ public class FreeMakerTemplate {
             String path = getPath(codeInfo.getServiceImplPkg());
             checkFileDir(path);
 
-            config.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH));
             Template template = config.getTemplate("serviceImpl.ftl", "UTF-8");
             Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + codeInfo.getServiceImpl() + ".java"), "UTF-8"));
             template.process(codeInfo, out);
@@ -107,7 +103,6 @@ public class FreeMakerTemplate {
             String path = getPath(codeInfo.getRepositoryPkg());
             checkFileDir(path);
 
-            config.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH));
             Template template = config.getTemplate("repository.ftl", "UTF-8");
             Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + codeInfo.getRepository() + ".java"), "UTF-8"));
             template.process(codeInfo, out);
@@ -127,7 +122,6 @@ public class FreeMakerTemplate {
             String path = getPath(codeInfo.getControllerPkg());
             checkFileDir(path);
 
-            config.setDirectoryForTemplateLoading(new File(TEMPLATE_PATH));
             Template template = config.getTemplate("controller.ftl", "UTF-8");
             Writer out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path + "/" + codeInfo.getController() + ".java"), "UTF-8"));
             template.process(codeInfo, out);
