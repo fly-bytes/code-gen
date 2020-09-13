@@ -17,7 +17,7 @@ public class ${entry}ServiceImpl implements ${entry}Service {
     private ${entry}Repository baseRepository;
 
     public Page<${entry}> page(int page, int size) {
-        return baseRepository.findAll(PageRequest.of(page, size));
+        return baseRepository.findAll(PageRequest.of(page-1, size));
     }
 
     @Override

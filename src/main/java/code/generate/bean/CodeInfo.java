@@ -85,7 +85,7 @@ public class CodeInfo {
         this.entryPkg = basePkg + ".bean";
         this.controllerPkg = basePkg + ".controller";
         this.servicePkg = basePkg + ".service";
-        this.serviceImplPkg = basePkg + ".service" + ".serviceImpl";
+        this.serviceImplPkg = basePkg + ".service" + ".Impl";
         this.repositoryPkg = basePkg + ".repository";
     }
 

@@ -15,7 +15,14 @@ public class GenerateConfig {
     private DataSource dataSource;
     // 生成包路径
     private String basePkg;
+
     private FreeMakerTemplate freeMakerTemplate;
+
+    private String entryFtl;
+    private String controllerFtl;
+    private String serviceFtl;
+    private String serviceImplFtl;
+    private String repositoryFtl;
 
     public void exec() {
         if (dataSource == null) {
@@ -31,7 +38,7 @@ public class GenerateConfig {
         List<TableInfo> mateData = JdbcUtil.getMateData(dataSource);
         CodeInfo codeInfo = new CodeInfo(mateData, dataSource, basePkg);
 
-        FreeMakerTemplate freeMakerTemplate = new FreeMakerTemplate();
+        FreeMakerTemplate freeMakerTemplate = new FreeMakerTemplate(entryFtl, controllerFtl, serviceFtl, serviceImplFtl, repositoryFtl);
         freeMakerTemplate.generate(codeInfo);
     }
 }

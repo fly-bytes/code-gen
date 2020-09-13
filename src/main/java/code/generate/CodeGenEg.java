@@ -9,8 +9,8 @@ public class CodeGenEg {
         dataSource.setDriverName("com.mysql.cj.jdbc.Driver");
         dataSource.setUserName("root");
         dataSource.setPassword("123456");
-        dataSource.setUrl("jdbc:mysql://192.168.0.200:3306/crm?useSSL=false&useUnicode=true&characterEncoding=utf8");
-        dataSource.setTableName("tb_discuss_log");
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/tds?serverTimezone=UTC&useSSL=false&useUnicode=true&characterEncoding=utf8");
+        dataSource.setTableName("td_point_info");
         dataSource.setTablePrefix("tb_");
 
         GenerateConfig generateConfig = new GenerateConfig();
